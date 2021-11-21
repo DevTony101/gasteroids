@@ -1,13 +1,18 @@
 class Ship {
-  constructor(x, y, bulletMovement) {
+  constructor(x, y, bulletMovement, initialHearts) {
     this.x = x;
     this.y = y;
     this.bullets = new MovableObjects(0, -bulletMovement);
-    this.shootSoundEffect = null;
+    this.hearts = initialHearts;
+    this.score = 0;
   }
 
   getBullets() {
     return this.bullets.collection;
+  }
+
+  getScore() {
+    return this.score;
   }
 
   deleteBullet(index) {
@@ -17,6 +22,14 @@ class Ship {
   setShootSoundEffect(soundEffect) {
     soundEffect.setVolume(0.02);
     this.shootSoundEffect = soundEffect;
+  }
+
+  setHeartImage(image) {
+    this.heartImage = image;
+  }
+
+  setScoreFont(font) {
+    this.scoreFont = font;
   }
 
   shoot() {
@@ -29,8 +42,22 @@ class Ship {
     }
   }
 
+  incrementScore(inc) {
+    this.score += inc;
+  }
+
+  decrementHearts() {
+    this.hearts--;
+  }
+
+  hasAnyHeartsLeft() {
+    return this.hearts > 0;
+  }
+
   draw(x) {
+    this.drawHearts();
     this.drawBullets();
+    this.drawScore();
     let translateX = mapXLimits(x);
     push();
     translate(translateX, this.y);
@@ -50,5 +77,22 @@ class Ship {
       noStroke();
       rect(0, 0, 2, 10);
     });
+  }
+
+  drawHearts() {
+    for (let i = 0; i < this.hearts; i++) {
+      const xPos = (20 * i) + 20;
+      const offset = 25 * i;
+      image(this.heartImage, xPos + offset, 25, 35, 35, 0, 0);
+    }
+  }
+
+  drawScore() {
+    push();
+    fill(255);
+    textFont(this.scoreFont);
+    textSize(15);
+    text(`Score: ${this.score}`, 20, 100);
+    pop();
   }
 }

@@ -20,7 +20,6 @@ class Debri {
   }
   
   move() {
-    this.angle += 0.01;
     this.x = this.x + this.movementX;
     this.y = this.y + this.movementY;
     for (let i = 0; i < this.verticies.length; i++) {
