@@ -27,3 +27,11 @@ The way these values are set in each game mode are given in the table below:
 |   Medium  |            5            |                      7                     |              3              |               2               |        1.2       |
 |    Hard   |            8            |                      9                     |              5              |               3               |        1.3       |
 
+## Improvements
+If you are interested, here's some items you could make to improve this game:
+
+- [ ] Make the ship explode when an asteroid hit it
+- [ ] Give the ship some special super-power based on the score
+- [ ] Give the ship an extra-live based on the score
+- [ ] Give the ship some powerup by exploding an "special item"
+- [ ] Add a bossfight (A big asteroid that requires a set number of hits maybe?)
