@@ -1,4 +1,6 @@
 # Gasteroids 👾 + ☄️
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](https://github.com/DevTony101/gasteroids/blob/main/LICENSE)
+![Made Using: P5JS](https://img.shields.io/badge/Made%20Using-P5JS-pink?style=flat-square)
 
 ## Preamble
 A mysterious horde of asteroids had been released upon Earth and unleashed terror among its inhabitants. You, an awarded space commander, had been chosen to protect Earth by destroying all the asteroids before they hit the planet!
