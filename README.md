@@ -5,6 +5,8 @@
 ## Preamble
 A mysterious horde of asteroids had been released upon Earth and unleashed terror among its inhabitants. You, an awarded space commander, had been chosen to protect Earth by destroying all the asteroids before they hit the planet!
 
+*Play [here](https://devtony101.github.io/gasteroids/)*.
+
 ## Game mechanics
 - **Your misssion**: Destroy as many asteroids as you can! If an asteroid goes past the bottom border of your screen you will lose a heart point! The number of heart points you start the game with are conditioned by the game's difficulty.
 - **Moving**: You can move your ship by moving the mouse along the x-axis.
