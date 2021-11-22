@@ -27,9 +27,9 @@ The way these values are set in each game mode are given in the table below:
 |:---------:|:-----------------------:|:------------------------------------------:|:---------------------------:|:-----------------------------:|:----------------:|
 |    Easy   |            5            |                      5                     |              2              |               1               |         1        |
 |   Medium  |            5            |                      7                     |              3              |               2               |        1.2       |
-|    Hard   |            8            |                      9                     |              5              |               3               |        1.3       |
+|    Hard   |            8            |                      9                     |              5              |               3               |        1.5       |
 
-You can pick one of these modes at the "Game Over" screen.
+You can pick one of these modes at the "**Game Over**" screen.
 
 ## Improvements
 If you are interested, here's some items you could make to improve this game:
