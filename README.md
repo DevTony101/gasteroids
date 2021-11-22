@@ -34,8 +34,8 @@ You can pick one of these modes at the "**Game Over**" screen.
 ## Improvements
 If you are interested, here's some items you could make to improve this game:
 
-- [ ] Make the ship explode when an asteroid hit it
-- [ ] Give the ship some special super-power based on the score
-- [ ] Give the ship an extra-live based on the score
-- [ ] Give the ship some powerup by exploding an "special item"
+- [ ] Make the spaceship explode when an asteroid hit it
+- [ ] Give the spaceship some special super-power based on the score
+- [ ] Give the spaceship an extra-live based on the score
+- [ ] Give the spaceship some powerup by exploding an "special item"
 - [ ] Add a bossfight (A big asteroid that requires a set number of hits maybe?)
