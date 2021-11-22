@@ -94,6 +94,7 @@ function draw() {
       gameOverEffect.setVolume(0.05);
       gameOverEffect.play();
     }
+    drawAttribution();
     buttons.forEach(button => button.visible = true);
     if (easyButton.isPressed) restartGame("EASY");
     else if (mediumButton.isPressed) restartGame("MEDIUM");
@@ -191,4 +192,13 @@ function drawDifficulty() {
     text(`Difficulty [${globalDifficulty}]`, 20, 130);
     pop();
   }
+}
+
+function drawAttribution() {
+  push();
+  fill(255);
+  textFont(psFont);
+  textSize(14);
+  text("Made by user DevTony101 on Github", (width / 2) - 225, (height / 2) + 200);
+  pop();
 }
