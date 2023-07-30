@@ -48,21 +48,39 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   gui = createGui();
   easyButton = createButton("Restart Game [Easy]", (width / 2) - 375, (height / 2) + 100, 230, 40);
+  easyButton.visible = false;
+  easyButton.setStyle({
+    strokeBg: color(255),
+    fillBg: color(95, 220, 227),
+    fillLabel: color(0),
+    fillBgHover: color(140, 232, 237),
+    fillLabelHover: color(0),
+    strokeBgHover: color(255),
+  });
+
   mediumButton = createButton("Restart Game [Medium]", (width / 2) - 125, (height / 2) + 100, 250, 40);
+  mediumButton.visible = false;
+  mediumButton.setStyle({
+    strokeBg: color(255),
+    fillBg: color(245, 186, 91),
+    fillLabel: color(0),
+    fillBgHover: color(250, 201, 122),
+    fillLabelHover: color(0),
+    strokeBgHover: color(255)
+  });
+
   hardButton = createButton("Restart Game [Hard]", (width / 2) + 145, (height / 2) + 100, 230, 40);
+  hardButton.visible = false;
+  hardButton.setStyle({
+    strokeBg: color(255),
+    fillBg: color(255, 130, 84),
+    fillLabel: color(0),
+    fillBgHover: color(250, 156, 122),
+    fillLabelHover: color(0),
+    strokeBgHover: color(255)
+  });
+
   buttons = [easyButton, mediumButton, hardButton];
-  for (button of buttons) {
-    button.visible = false;
-    button.setStyle({
-      strokeBg: color(255),
-      fillBg: color(0),
-      fillLabel: color(255),
-      fillBgActive: color(255),
-      fillLabelActive: color(0),
-      fillBgHover: color(255),
-      fillLabelHover: color(0)
-    });
-  }
   restartGame("EASY");
 }
 
@@ -84,6 +102,7 @@ function draw() {
   drawStars();
   drawAsteroids();
   drawDifficulty();
+  drawBonusText();
   ship.draw(mouseX);
   if (!ship.hasAnyHeartsLeft() || gameOver) {
     asteroids = [];
@@ -133,6 +152,7 @@ function restartGame(difficulty) {
   ship.setShootSoundEffect(shootEffect);
   ship.setHeartImage(heartImage);
   ship.setScoreFont(psFont);
+  ship.setAdditionalShots(difficulty);
   stars = new MovableObjects(0, starsMovement, numberOfStars);
   buttons.forEach(button => button.visible = false);
   asteroids = Array(numberOfInitialAsteroids)
@@ -156,10 +176,14 @@ function drawAsteroids() {
   if (!gameOver) {
     if (frameCount % 50 === 0) {
       for (let i = 0; i < asteroidsToAdd; i++) {
-        asteroids.push(new Asteroid(random(50, width - 50), random(10, 20)));
+        const asteroid = new Asteroid(random(50, width - 50), random(10, 20));
+        if (random() < 0.15 && !ship.hasMultShooter()) {
+          asteroid.setIsBonus(true);
+        }
+        asteroids.push(asteroid);
       }
     }
-  
+
     for (let i = 0; i < asteroids.length; i++) {
       const asteroid = asteroids[i];
       const idxBullet = asteroid.isHitBy(ship.getBullets());
@@ -168,13 +192,14 @@ function drawAsteroids() {
         asteroids.splice(i, 1);
         continue;
       }
-      
+
       if (!asteroid.hasExploded() && idxBullet >= 0) {
         ship.incrementScore(scoreIncrement * scoreMultiplier);
         asteroid.explode(explodeEffect);
         ship.deleteBullet(idxBullet);
+        if (asteroid.isBonus && !ship.hasMultShooter()) ship.enableMultShooter();
       }
-  
+
       asteroid.move();
       asteroid.draw();
     }
@@ -187,9 +212,20 @@ function drawDifficulty() {
     textFont(psFont);
     textSize(12);
     if (globalDifficulty === "EASY") fill(68, 161, 160);
-    else if(globalDifficulty === "MEDIUM") fill(238, 184, 104);
+    else if (globalDifficulty === "MEDIUM") fill(238, 184, 104);
     else if (globalDifficulty === "HARD") fill(250, 0, 63);
     text(`Difficulty [${globalDifficulty}]`, 20, 130);
+    pop();
+  }
+}
+
+function drawBonusText() {
+  if (ship.hasMultShooter() && !gameOver) {
+    push();
+    fill(150, 0, 100);
+    textFont(psFont);
+    textSize(10);
+    text("Bonus [ACTIVE]", 20, 160);
     pop();
   }
 }
