@@ -6,6 +6,7 @@ class Ship {
     this.score = 0;
     this.bullets = new MovableObjects(0, -bulletMovement);
     this.bulletsLimit = bulletsLimit;
+    this.multShooterEnabled = false;
   }
 
   getBullets() {
@@ -33,13 +34,31 @@ class Ship {
     this.scoreFont = font;
   }
 
+  setAdditionalShots() {
+    if (globalDifficulty === "EASY") this.additionalShots = 1;
+    else if (globalDifficulty === "MEDIUM") this.additionalShots = 2;
+    else if (globalDifficulty === "HARD") this.additionalShots = 4;
+  }
+
   shoot() {
-    if (this.bullets.size() < this.bulletsLimit) {
+    const limit = this.multShooterEnabled ? this.bulletsLimit * (this.additionalShots + 1) : this.bulletsLimit;
+    if (this.bullets.size() < limit) {
       this.shootSoundEffect.play();
-      this.bullets.add({
-        x: mapXLimits(mouseX),
-        y: height - 50,
-      });
+      if (this.multShooterEnabled) {
+        for (let i = 0; i < this.additionalShots + 1; i++) {
+          const xOffset = this.additionalShots > 3 ? 5 * this.additionalShots : 0;
+          const xInOffset = this.addiotnalShots > 3 ? 15 : 20;
+          this.bullets.add({
+            x: (mapXLimits(mouseX) + ((xInOffset * i) - xInOffset)) - xOffset,
+            y: height - (i % 2 == 0 ? 25 : 50),
+          });
+        }
+      } else {
+        this.bullets.add({
+          x: mapXLimits(mouseX),
+          y: height - 50
+        });
+      }
     }
   }
 
@@ -55,7 +74,23 @@ class Ship {
     return this.hearts > 0;
   }
 
+  hasMultShooter() {
+    return this.multShooterEnabled;
+  }
+
+  enableMultShooter() {
+    this.bonusTime = new Date();
+    this.multShooterEnabled = true;
+  }
+
   draw(x) {
+    if (this.multShooterEnabled) {
+      const diff = new Date().getTime() - this.bonusTime.getTime();
+      if (((diff % 60000) / 1000).toFixed(0) >= 10) {
+        this.multShooterEnabled = false;
+        this.bullets.deleteAll();
+      }
+    }
     this.drawScore();
     if (!gameOver) {
       this.drawHearts();
@@ -74,12 +109,21 @@ class Ship {
 
   drawBullets() {
     if (this.bullets.size() > 0) this.bullets.move((x, y) => y < 0);
-    this.bullets.draw((x, y) => {
-      translate(x, y);
-      fill(255);
-      noStroke();
-      rect(0, 0, 2, 10);
-    });
+    if (this.multShooterEnabled) {
+      this.bullets.drawBatch((x, y) => {
+        translate(x, y);
+        fill(255);
+        noStroke();
+        rect(0, 0, 2, 10);
+      }, this.additionalShots + 1);
+    } else {
+      this.bullets.draw((x, y) => {
+        translate(x, y);
+        fill(255);
+        noStroke();
+        rect(0, 0, 2, 10);
+      });
+    }
   }
 
   drawHearts() {

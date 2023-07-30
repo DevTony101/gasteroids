@@ -42,10 +42,11 @@ class Debri {
     return p5.Vector.add(p1, p2).div(2);
   }
   
-  draw() {
+  draw(color) {
     push();
     beginShape();
-    noFill();
+    if (color) fill(color);
+    else noFill();
     stroke(255);
     for (let i = 0; i < this.verticies.length; i++) {
       const { x, y } = this.verticies[i];
