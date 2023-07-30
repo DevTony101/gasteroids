@@ -38,5 +38,5 @@ If you are interested, here's some items you could make to improve this game:
 - [ ] Make the spaceship explode when an asteroid hit it
 - [ ] Give the spaceship some special super-power based on the score
 - [ ] Give the spaceship an extra-live based on the score
-- [ ] Give the spaceship some powerup by exploding an "special item"
+- [X] Give the spaceship some powerup by exploding an "special item" ([v1.3.0](https://github.com/DevTony101/gasteroids/releases/tag/v1.3.0))
 - [ ] Add a bossfight (A big asteroid that requires a set number of hits maybe?)
