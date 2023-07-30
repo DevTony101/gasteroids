@@ -235,6 +235,6 @@ function drawAttribution() {
   fill(255);
   textFont(psFont);
   textSize(14);
-  text("Made by user DevTony101 on Github", (width / 2) - 225, (height / 2) + 200);
+  text("Made by user DevTony101 on GitHub", (width / 2) - 225, (height / 2) + 200);
   pop();
 }
