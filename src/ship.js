@@ -140,7 +140,7 @@ class Ship {
 		textFont(this.scoreFont);
 		textSize(15);
 		if (!gameOver) {
-			text(`Score: ${this.score}`, 20, 100);
+			text(`Score: ${this.score}`,20, 100);
 		} else {
 			text("Final Score", (width / 2) - 80, 75);
 			if (this.score === 0) text(this.score, (width / 2) - 10, 110);
