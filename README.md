@@ -11,7 +11,7 @@ A mysterious horde of asteroids had been released upon Earth and unleashed terro
 - **Your misssion**: Destroy as many asteroids as you can! If an asteroid goes past the bottom border of your screen you will lose a heart point! The number of heart points you start the game with are conditioned by the game's difficulty.
 - **Moving**: You can move your ship by moving the mouse along the x-axis.
 - **Shooting**: You can activate your laser gun by clicking on the screen or pressing the space bar. The number of "bullets" you can fire at a given time is conditioned by the game's difficulty.
-- **Bonus mode**: Some asteroids are ***Bonus Asteroids***, when you manage to destroy one it will grant you additional bullets per shoot. You'll only have this upgrade for 10 seconds after destroying the bonus asteroid. The number of extra bullets depends on the game difficulty, check the table below for reference.
+- **Bonus mode**: Some asteroids are ***Bonus Asteroids***, when you manage to destroy one it will grant you additional bullets per shoot. You'll only have this upgrade for 10 seconds after destroying the bonus asteroid. Bonus asteroids, unlike regular asteroids, will be colored. The number of extra bullets depends on the game difficulty, check the table below for reference.
 - **Exiting the game**: You can press the **[ESC]** key at any time to exit the game.
 
 ## Game modes
