@@ -5,6 +5,13 @@ class Asteroid extends Debri {
     this.movementX = random(-1, 1);
     this.debri = [];
     this.exploded = false;
+    this.isBonus = false;
+    this.color = undefined;
+  }
+
+  setIsBonus(value) {
+    this.isBonus = value;
+    if (value) this.color = color(random(150, 200), random(150, 200), random(150, 200));
   }
   
   hasExploded() {
@@ -40,7 +47,7 @@ class Asteroid extends Debri {
   }
   
   draw() {
-    super.draw();
-    this.debri.forEach(debri => debri.draw());
+    super.draw(this.color);
+    this.debri.forEach(debri => debri.draw(this.color));
   }
 }
