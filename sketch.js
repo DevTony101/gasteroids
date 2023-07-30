@@ -152,7 +152,7 @@ function restartGame(difficulty) {
   ship.setShootSoundEffect(shootEffect);
   ship.setHeartImage(heartImage);
   ship.setScoreFont(psFont);
-  ship.setAdditionalShots(difficulty);
+  ship.setAdditionalShots();
   stars = new MovableObjects(0, starsMovement, numberOfStars);
   buttons.forEach(button => button.visible = false);
   asteroids = Array(numberOfInitialAsteroids)

@@ -34,7 +34,7 @@ class Ship {
 		this.scoreFont = font;
 	}
 
-	setAdditionalShots(difficulty) {
+	setAdditionalShots() {
 		if (globalDifficulty === "EASY") this.additionalShots = 1;
 		else if (globalDifficulty === "MEDIUM") this.additionalShots = 2;
 		else if (globalDifficulty === "HARD") this.additionalShots = 4;
