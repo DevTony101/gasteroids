@@ -33,7 +33,7 @@ The way these values are set in each game mode are given in the table below:
 You can pick one of these modes at the "**Game Over**" screen.
 
 ## Improvements
-If you are interested, here's some items you could make to improve this game:
+If you are interested, here's some items you could make to improve this game. Remember to follow the [contributing guide](https://github.com/DevTony101/gasteroids/blob/main/CONTRIBUTING.md).
 
 - [ ] Make the spaceship explode when an asteroid hit it
 - [ ] Give the spaceship some special super-power based on the score
